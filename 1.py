@@ -1,27 +1,32 @@
 import ccxt
-import time
-from datetime import datetime
 
+print("*" * 100)
+# List
+coinLists = ["비트코인", "이더리움", "리플"]
+print(coinLists)
+print(coinLists[0])
+coinLists.append("보라")
+print(coinLists)
+coinLists.remove("보라")
+print(coinLists)
+
+print("*" * 100)
+# dictonary
+prices = {"low": 100, "high": 200, "close": 180}
+print(f"# closed prices : {prices['close']}")
+
+print("*" * 100)
 upbit = ccxt.upbit()
 
-def getPrice(_ticker):
-    infos = upbit.fetch_ticker(_ticker)
-    price_close = infos['close']
-    return price_close
+print("*" * 100)
+upbit.load_markets()
 
-def getPriceTest(_ticker):
-    infos = upbit.fetch_ticker(_ticker)
-    print("*" * 100)
-    print(infos)
+print("*" * 100)
+print(upbit.symbols)
 
-    print("*" * 100)
-    print(f"# symbol : {infos['symbol']}")
-    print(f"# close  : {infos['close']}")
-    print(f"# high   : {infos['high']}")
-
-while True:
-    time.sleep(3)
-    price = getPrice("XRP/KRW")
-    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(f"[{now}] Price: {price}")
-
+print("*" * 100)
+infos = upbit.fetch_ticker("XRP/KRW")
+print(infos)
+print(f"# symbol : {infos['symbol']}")
+print(f"# close  : {infos['close']}")
+print(f"# high   : {infos['high']}")

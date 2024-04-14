@@ -9,11 +9,19 @@ def getPrice(_ticker):
     price_close = infos['close']
     return price_close
 
+def getPriceTest(_ticker):
+    infos = upbit.fetch_ticker(_ticker)
+    print("*" * 100)
+    print(infos)
 
-# symbols = ["BTC/KRW", "ETH/KRW"], "XRP/KRW"]
-upbit.load_markets()
-symbols = upbit.symbols
+    print("*" * 100)
+    print(f"# symbol : {infos['symbol']}")
+    print(f"# close  : {infos['close']}")
+    print(f"# high   : {infos['high']}")
 
-for symbol in symbols:
+while True:
+    time.sleep(3)
+    price = getPrice("XRP/KRW")
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(f"[{now}] Closed Price - {symbol} : {getPrice(symbol)}")
+    print(f"[{now}] Price: {price}")
+

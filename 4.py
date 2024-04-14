@@ -14,6 +14,13 @@ def getPrice(_ticker):
 upbit.load_markets()
 symbols = upbit.symbols
 
+mySymbols = ["BTC/KRW", "ETH/KRW", "XRP/KRW"]
+
 for symbol in symbols:
+    if not symbol in mySymbols:
+        continue
+    
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"[{now}] Closed Price - {symbol} : {getPrice(symbol)}")
+    
+    01:34:50
