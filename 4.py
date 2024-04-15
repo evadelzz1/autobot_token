@@ -23,4 +23,3 @@ for symbol in symbols:
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"[{now}] Closed Price - {symbol} : {getPrice(symbol)}")
     
-    01:34:50
